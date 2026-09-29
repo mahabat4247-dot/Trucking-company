@@ -1,75 +1,50 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Truck, Menu, X, Phone } from 'lucide-react';
-import './Header.css';
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
-  const closeMobileMenu = () => {
-    setMobileMenuOpen(false);
-  };
-
-  const scrollToQuote = (e) => {
+  const scrollToSection = (e, id) => {
     e.preventDefault();
-    closeMobileMenu();
-    const section = document.getElementById('quote');
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+    closeMenu();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
     <header className="header">
-      <div className="top-bar">
-        <div className="container top-bar-content">
-          <div className="top-bar-info">
-            <span>24/7 Dispatch Center</span>
-            <span className="divider">|</span>
-            <a href="tel:7735550100" className="phone-link">
-              <Phone size={14} /> (773) 555-0100
-            </a>
+      <div className="container header-container">
+        <a href="#home" className="logo" onClick={(e) => scrollToSection(e, 'home')}>
+          <Truck className="logo-icon" size={32} />
+          <span className="logo-text">RoadLine <span className="logo-highlight">Trucking</span></span>
+        </a>
+
+        <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+          <a href="#home" className="nav-link" onClick={(e) => scrollToSection(e, 'home')}>Home</a>
+          <a href="#services" className="nav-link" onClick={(e) => scrollToSection(e, 'services')}>Services</a>
+          <a href="#about" className="nav-link" onClick={(e) => scrollToSection(e, 'about')}>About</a>
+          <a href="#fleet" className="nav-link" onClick={(e) => scrollToSection(e, 'fleet')}>Fleet</a>
+          <a href="#contact" className="nav-link" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a>
+          <div className="mobile-cta">
+            <a href="#quote" className="btn btn-primary" onClick={(e) => scrollToSection(e, 'quote')}>Get a Quote</a>
           </div>
-          <div className="top-bar-location">Chicago, IL &bull; Nationwide Coverage</div>
-        </div>
-      </div>
+        </nav>
 
-      <div className="main-nav-wrapper">
-        <div className="container main-nav">
-          <a href="#home" className="logo">
-            <div className="logo-icon">
-              <Truck size={28} />
-            </div>
-            <div className="logo-text">
-              <span className="brand-name">RoadLine</span>
-              <span className="brand-tag">TRUCKING</span>
-            </div>
+        <div className="header-actions">
+          <a href="tel:7735550100" className="phone-link">
+            <Phone size={18} />
+            <span>(773) 555-0100</span>
           </a>
-
-          <nav className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
-            <a href="#home" onClick={closeMobileMenu}>Home</a>
-            <a href="#services" onClick={closeMobileMenu}>Services</a>
-            <a href="#about" onClick={closeMobileMenu}>About</a>
-            <a href="#fleet" onClick={closeMobileMenu}>Fleet</a>
-            <a href="#contact" onClick={closeMobileMenu}>Contact</a>
-            <a href="#quote" className="btn btn-quote-mobile" onClick={scrollToQuote}>
-              Get a Quote
-            </a>
-          </nav>
-
-          <a href="#quote" className="btn btn-primary btn-quote-desktop" onClick={scrollToQuote}>
+          <a href="#quote" className="btn btn-primary desktop-cta" onClick={(e) => scrollToSection(e, 'quote')}>
             Get a Quote
           </a>
-
-          <button
-            className="mobile-menu-toggle"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle navigation menu"
-          >
-            {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+          <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle navigation menu">
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>

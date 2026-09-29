@@ -1,58 +1,53 @@
+import React from 'react';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
-import './Contact.css';
 
 export default function Contact() {
   return (
-    <section id="contact" className="contact-section">
+    <section id="contact" className="section contact-section">
       <div className="container">
-        <div className="section-header">
+        <div className="section-header text-center">
           <span className="section-subtitle">Get In Touch</span>
-          <h2 className="section-title">Contact Information</h2>
+          <h2 className="section-title">Contact RoadLine Trucking</h2>
           <p className="section-description">
-            Have questions about our lanes, terminal facilities, or freight solutions? Reach out to our logistics team anytime.
+            Our dispatch and customer support team is available around the clock to support your transportation needs.
           </p>
         </div>
 
         <div className="contact-grid">
           <div className="contact-card">
-            <div className="contact-icon">
-              <MapPin size={26} />
+            <div className="contact-icon-wrapper">
+              <MapPin size={28} />
             </div>
-            <h3 className="contact-card-title">Corporate Headquarters</h3>
-            <p className="contact-card-text">
-              RoadLine Trucking<br />
-              Chicago, IL
-            </p>
+            <h3>Headquarters</h3>
+            <p>RoadLine Trucking</p>
+            <p>Chicago, IL</p>
           </div>
 
           <div className="contact-card">
-            <div className="contact-icon">
-              <Phone size={26} />
+            <div className="contact-icon-wrapper">
+              <Phone size={28} />
             </div>
-            <h3 className="contact-card-title">Phone Number</h3>
-            <p className="contact-card-text">
-              <a href="tel:7735550100">(773) 555-0100</a>
-            </p>
+            <h3>Phone</h3>
+            <p><a href="tel:7735550100">(773) 555-0100</a></p>
+            <p className="text-muted">Direct Line</p>
           </div>
 
           <div className="contact-card">
-            <div className="contact-icon">
-              <Mail size={26} />
+            <div className="contact-icon-wrapper">
+              <Mail size={28} />
             </div>
-            <h3 className="contact-card-title">Email Address</h3>
-            <p className="contact-card-text">
-              <a href="mailto:dispatch@roadlinetrucking.com">dispatch@roadlinetrucking.com</a>
-            </p>
+            <h3>Email</h3>
+            <p><a href="mailto:dispatch@roadlinetrucking.com">dispatch@roadlinetrucking.com</a></p>
+            <p className="text-muted">Inquiries & Quotes</p>
           </div>
 
           <div className="contact-card">
-            <div className="contact-icon">
-              <Clock size={26} />
+            <div className="contact-icon-wrapper">
+              <Clock size={28} />
             </div>
-            <h3 className="contact-card-title">Operating Hours</h3>
-            <p className="contact-card-text">
-              24/7 Dispatch Center
-            </p>
+            <h3>Hours</h3>
+            <p><strong>24/7 Dispatch</strong></p>
+            <p className="text-muted">Always active</p>
           </div>
         </div>
       </div>

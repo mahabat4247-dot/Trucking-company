@@ -1,64 +1,54 @@
-import { Package, Snowflake, Layers, Truck } from 'lucide-react';
-import './Fleet.css';
+import React from 'react';
+import { Truck, Navigation, Wrench, UserCheck } from 'lucide-react';
 
 export default function Fleet() {
   const fleetItems = [
     {
-      id: 'dry-van',
-      icon: <Package size={32} />,
-      title: 'Dry Van',
-      tag: "53' Trailer",
-      description:
-        'Enclosed trailers that protect general freight such as packaged goods, electronics and retail products.',
+      title: 'Modern Trucks',
+      description: 'Our modern tractor units are equipped with fuel-efficient engines, aerodynamic designs, and advanced safety features.',
+      icon: Truck
     },
     {
-      id: 'reefer',
-      icon: <Snowflake size={32} />,
-      title: 'Reefer',
-      tag: 'Temp Controlled',
-      description:
-        'Refrigerated trailers with temperature monitoring for food, beverages and pharmaceuticals.',
+      title: 'GPS Tracking',
+      description: 'Real-time satellite tracking and digital logging allow complete visibility into freight location and estimated time of arrival.',
+      icon: Navigation
     },
     {
-      id: 'flatbed',
-      icon: <Layers size={32} />,
-      title: 'Flatbed',
-      tag: 'Open Deck',
-      description:
-        'Open trailers for oversized loads like steel, lumber, machinery and construction materials.',
+      title: 'Regular Maintenance',
+      description: 'Rigorous preventive maintenance programs and daily safety inspections ensure maximum uptime and highway reliability.',
+      icon: Wrench
     },
     {
-      id: 'box-truck',
-      icon: <Truck size={32} />,
-      title: 'Box Truck',
-      tag: "26' Straight",
-      description:
-        'Smaller trucks for local and regional deliveries, final-mile service and tight city routes.',
-    },
+      title: 'Professional Drivers',
+      description: 'Fully licensed CDL holders with extensive safety records, continuous compliance training, and commitment to service.',
+      icon: UserCheck
+    }
   ];
 
   return (
-    <section id="fleet" className="fleet-section">
+    <section id="fleet" className="section fleet-section">
       <div className="container">
-        <div className="section-header">
-          <span className="section-subtitle">Our Equipment</span>
-          <h2 className="section-title">Our Fleet</h2>
+        <div className="section-header text-center">
+          <span className="section-subtitle">Our Fleet & Infrastructure</span>
+          <h2 className="section-title">Built For Dependability</h2>
           <p className="section-description">
-            The right equipment for every load, maintained to the highest standards.
+            We invest in premium equipment and advanced technologies to keep your supply chain dependable and stress-free.
           </p>
         </div>
 
         <div className="fleet-grid">
-          {fleetItems.map((item) => (
-            <div key={item.id} className="fleet-card">
-              <div className="fleet-card-header">
-                <div className="fleet-icon">{item.icon}</div>
-                <span className="fleet-card-tag">{item.tag}</span>
+          {fleetItems.map((item, idx) => {
+            const IconComponent = item.icon;
+            return (
+              <div className="fleet-card" key={idx}>
+                <div className="fleet-icon-wrapper">
+                  <IconComponent size={28} className="fleet-icon" />
+                </div>
+                <h3 className="fleet-title">{item.title}</h3>
+                <p className="fleet-description">{item.description}</p>
               </div>
-              <h3 className="fleet-card-title">{item.title}</h3>
-              <p className="fleet-card-description">{item.description}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

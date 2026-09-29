@@ -1,131 +1,107 @@
-# RoadLine Trucking - Web Application
+# RoadLine Trucking Website
 
-A modern, responsive, professional frontend website for **RoadLine Trucking**, a US-based freight logistics company.
+A modern, professional frontend website for **RoadLine Trucking**, a logistics and transportation company headquartered in Chicago, IL.
 
-This repository is designed as a clean React application that can be used for DevOps and CI/CD practice (e.g., GitHub Actions, Docker, SonarQube, Trivy, AWS ECR, Kubernetes).
+This frontend application is built as a lightweight, performant React project designed to serve as a base project for DevOps practices including GitHub Actions CI/CD pipelines, Docker containerization, SonarQube code analysis, Trivy vulnerability scanning, AWS ECR image registry, and Kubernetes deployments.
 
----
+## Features
 
-## 🚀 Features
+- **Responsive Header & Navigation**: Smooth scrolling navigation bar with company logo, navigation links, and quote request button. Responsive mobile overlay menu.
+- **Hero Section**: Modern logistics branding with call-to-action buttons ("Get a Quote" and "Our Services").
+- **Services Section**: Interactive cards highlighting key logistics services:
+  - Full Truckload (FTL)
+  - Less Than Truckload (LTL)
+  - Expedited Freight
+  - Dedicated Transportation
+- **About Us Section**: Highlighting company history ("Moving America Forward") with key operational metrics and statistics counters.
+- **Fleet Section**: Overview of fleet capabilities including modern trucks, GPS tracking, regular maintenance, and professional drivers.
+- **Why Choose Us**: Key advantages including 24/7 dispatch, real-time tracking, experienced drivers, safety focus, and reliable delivery.
+- **Quote Request Form**: Comprehensive quote request form with client-side field validation and feedback state.
+- **Contact Info & Footer**: Detailed company location (Chicago, IL), phone number, dispatch email, operating hours, and quick links.
 
-- **Navbar**: Logo, links (Home, Services, About, Fleet, Contact) and a "Get a Quote" button. Collapses to a menu on mobile.
-- **Hero**: "Reliable Freight. Delivered On Time." with call-to-action buttons and an inline SVG highway/truck illustration.
-- **Services**: Full Truckload, Less Than Truckload, Expedited Freight, Dedicated Routes, Warehousing & Logistics, Nationwide Delivery.
-- **About**: Company overview and mission.
-- **Why Choose Us**: On-Time Delivery, Experienced Drivers, Modern Fleet, 24/7 Dispatch, Nationwide Coverage, Safety First.
-- **Fleet**: Dry Van, Reefer, Flatbed, Box Truck.
-- **Company Statistics**: 10+ Years Experience, 50+ Trucks, 48 States Covered, 99% On-Time Delivery.
-- **Get a Quote Form**: Frontend-only form with validation (nothing is sent anywhere).
-- **Contact & Footer**: Quick links, services, contact information and copyright.
-
----
-
-## 🛠️ Technology Stack
+## Tech Stack
 
 - **React 19**
-- **Vite**
-- **JavaScript (ES6+)**
-- **CSS3 (Flexbox & CSS Grid)**
-- **Lucide React** (Icons)
-- **ESLint** (Linting & Code Quality)
+- **Vite 6**
+- **Lucide React** (Minimal, clean UI icons)
+- **CSS3** (Responsive CSS variables, Grid, Flexbox)
 
 ---
 
-## 💻 Getting Started
+## Development & Usage Instructions
 
 ### Prerequisites
 
-Ensure you have **Node.js** (v18+) and **npm** installed.
+Ensure you have Node.js (v18+) and npm installed on your machine.
 
-### 1. Installation
+### Installation
 
-Install all project dependencies:
+Clone the repository and install the project dependencies:
 
 ```bash
 npm install
 ```
 
-### 2. Local Development
+### Development Server
 
-Start the Vite development server:
+Start the Vite development server with hot module replacement (HMR):
 
 ```bash
 npm run dev
 ```
 
-Open your browser at `http://localhost:5173`.
+The application will be available at `http://localhost:5173`.
 
-### 3. Code Quality / Linting
+### Code Linting
 
-Run ESLint to check for code quality and formatting issues:
+Run Oxlint to check for code quality and syntax issues:
 
 ```bash
 npm run lint
 ```
 
-### 4. Production Build
+### Production Build
 
-Build the optimized application for production deployment:
+Build the production-ready static assets:
 
 ```bash
 npm run build
 ```
 
-The output build files will be created in the `dist/` directory.
+The compiled assets will be output to the `dist/` directory.
 
-### 5. Docker
+### Preview Production Build
 
-The `Dockerfile` uses a multi-stage build:
-
-1. **Stage 1** (`node:22-alpine`): runs `npm ci` and `npm run build` to create `dist/`.
-2. **Stage 2** (`nginx:alpine`): copies `dist/` into `/usr/share/nginx/html` and serves it with `nginx.conf`.
+Preview the production build locally:
 
 ```bash
-docker build -t roadline-trucking:latest .
-docker run -d -p 8080:80 --name roadline-trucking roadline-trucking:latest
+npm run preview
 ```
-
-Open `http://localhost:8080`. A health check endpoint is available at `http://localhost:8080/health`.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
+.
 ├── public/
-│   └── favicon.svg
 ├── src/
 │   ├── components/
-│   │   ├── About.css
 │   │   ├── About.jsx
-│   │   ├── Contact.css
 │   │   ├── Contact.jsx
-│   │   ├── Fleet.css
 │   │   ├── Fleet.jsx
-│   │   ├── Footer.css
 │   │   ├── Footer.jsx
-│   │   ├── Header.css
 │   │   ├── Header.jsx
-│   │   ├── Hero.css
 │   │   ├── Hero.jsx
-│   │   ├── QuoteForm.css
 │   │   ├── QuoteForm.jsx
-│   │   ├── Services.css
 │   │   ├── Services.jsx
-│   │   ├── Stats.css
-│   │   ├── Stats.jsx
-│   │   ├── WhyChooseUs.css
 │   │   └── WhyChooseUs.jsx
 │   ├── styles/
-│   │   └── global.css
+│   │   └── index.css
 │   ├── App.jsx
 │   └── main.jsx
-├── .dockerignore
-├── Dockerfile
-├── eslint.config.js
 ├── index.html
-├── nginx.conf
 ├── package.json
-├── README.md
-└── vite.config.js
+├── vite.config.js
+└── README.md
 ```

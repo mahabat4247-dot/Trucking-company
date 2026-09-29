@@ -1,71 +1,67 @@
-import { Truck, PackageCheck, Zap, Route, Warehouse, Map } from 'lucide-react';
-import './Services.css';
+import React from 'react';
+import { Truck, Package, Zap, ShieldAlert } from 'lucide-react';
 
 export default function Services() {
-  const servicesList = [
+  const services = [
     {
       id: 'ftl',
-      icon: <Truck size={36} />,
-      title: 'Full Truckload',
-      description:
-        'Dedicated trailer capacity for high-volume freight with direct point-to-point transit and no extra stops.',
+      title: 'Full Truckload (FTL)',
+      description: 'Dedicated capacity for full loads across the continental US with direct door-to-door delivery.',
+      icon: Truck,
+      features: ['Dedicated trailer space', 'Direct non-stop transit', 'Customized handling']
     },
     {
       id: 'ltl',
-      icon: <PackageCheck size={36} />,
-      title: 'Less Than Truckload',
-      description:
-        'Cost-effective shipping for smaller loads. Pay only for the trailer space your freight actually uses.',
+      title: 'Less Than Truckload (LTL)',
+      description: 'Cost-effective freight solutions for smaller shipments that don’t require a full trailer.',
+      icon: Package,
+      features: ['Shared freight savings', 'Flexible scheduling', 'Consolidated shipping']
     },
     {
       id: 'expedited',
-      icon: <Zap size={36} />,
       title: 'Expedited Freight',
-      description:
-        'Time-critical delivery with team drivers for non-stop transit when your shipment cannot wait.',
+      description: 'Time-critical shipment solutions with priority handling and team drivers for ultra-fast delivery.',
+      icon: Zap,
+      features: ['24/7 priority routing', 'Dual team drivers', 'Guaranteed delivery windows']
     },
     {
       id: 'dedicated',
-      icon: <Route size={36} />,
-      title: 'Dedicated Routes',
-      description:
-        'Assigned trucks and drivers running your regular lanes on a consistent, predictable schedule.',
-    },
-    {
-      id: 'warehousing',
-      icon: <Warehouse size={36} />,
-      title: 'Warehousing & Logistics',
-      description:
-        'Short-term storage, cross-docking and distribution support to keep your supply chain moving.',
-    },
-    {
-      id: 'nationwide',
-      icon: <Map size={36} />,
-      title: 'Nationwide Delivery',
-      description:
-        'Coast-to-coast coverage across all 48 contiguous states with real-time shipment updates.',
-    },
+      title: 'Dedicated Transportation',
+      description: 'Customized fleet solutions tailored to your ongoing supply chain requirements and operational schedule.',
+      icon: ShieldAlert,
+      features: ['Exclusive fleet access', 'Contracted reliable routes', 'Brand customized equipment']
+    }
   ];
 
   return (
-    <section id="services" className="services-section">
+    <section id="services" className="section services-section">
       <div className="container">
-        <div className="section-header">
-          <span className="section-subtitle">What We Do</span>
-          <h2 className="section-title">Our Transportation Services</h2>
+        <div className="section-header text-center">
+          <span className="section-subtitle">Our Capabilities</span>
+          <h2 className="section-title">Comprehensive Freight Services</h2>
           <p className="section-description">
-            Flexible freight solutions built around safety, predictability and efficiency in your supply chain.
+            Whether you need a single load moved or a dedicated transportation strategy, RoadLine Trucking provides seamless logistics solutions.
           </p>
         </div>
 
         <div className="services-grid">
-          {servicesList.map((service) => (
-            <div key={service.id} className="service-card">
-              <div className="service-icon-wrapper">{service.icon}</div>
-              <h3 className="service-card-title">{service.title}</h3>
-              <p className="service-card-description">{service.description}</p>
-            </div>
-          ))}
+          {services.map((service) => {
+            const IconComponent = service.icon;
+            return (
+              <div className="service-card" key={service.id}>
+                <div className="service-icon-wrapper">
+                  <IconComponent size={32} className="service-icon" />
+                </div>
+                <h3 className="service-title">{service.title}</h3>
+                <p className="service-description">{service.description}</p>
+                <ul className="service-features">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx}>✓ {feature}</li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

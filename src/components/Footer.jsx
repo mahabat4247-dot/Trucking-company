@@ -1,66 +1,65 @@
+import React from 'react';
 import { Truck } from 'lucide-react';
-import './Footer.css';
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <footer className="footer">
+    <footer className="footer bg-dark text-white">
       <div className="container">
-        <div className="footer-top">
+        <div className="footer-grid">
           <div className="footer-brand">
-            <a href="#home" className="footer-logo">
-              <div className="logo-icon">
-                <Truck size={24} />
-              </div>
-              <div className="logo-text">
-                <span className="brand-name light">RoadLine</span>
-                <span className="brand-tag">TRUCKING</span>
-              </div>
+            <a href="#home" className="logo" onClick={(e) => scrollToSection(e, 'home')}>
+              <Truck className="logo-icon text-highlight" size={28} />
+              <span className="logo-text text-white">RoadLine <span className="logo-highlight">Trucking</span></span>
             </a>
-            <p className="footer-brand-desc">
-              Reliable, nationwide freight transportation and logistics solutions built on safety, experience, and speed.
+            <p className="footer-description">
+              Professional trucking and logistics solutions across the United States. Delivering excellence and reliability on every route.
             </p>
           </div>
 
-          <div className="footer-links-group">
-            <h4 className="footer-title">Quick Links</h4>
+          <div className="footer-links-col">
+            <h4 className="footer-heading">Quick Links</h4>
             <ul className="footer-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#fleet">Fleet</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#home" onClick={(e) => scrollToSection(e, 'home')}>Home</a></li>
+              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Services</a></li>
+              <li><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About Us</a></li>
+              <li><a href="#fleet" onClick={(e) => scrollToSection(e, 'fleet')}>Fleet</a></li>
+              <li><a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a></li>
             </ul>
           </div>
 
-          <div className="footer-links-group">
-            <h4 className="footer-title">Services</h4>
+          <div className="footer-links-col">
+            <h4 className="footer-heading">Services</h4>
             <ul className="footer-links">
-              <li><a href="#services">Full Truckload</a></li>
-              <li><a href="#services">Less Than Truckload</a></li>
-              <li><a href="#services">Expedited Freight</a></li>
-              <li><a href="#services">Dedicated Routes</a></li>
-              <li><a href="#services">Warehousing & Logistics</a></li>
-              <li><a href="#services">Nationwide Delivery</a></li>
+              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Full Truckload (FTL)</a></li>
+              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Less Than Truckload (LTL)</a></li>
+              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Expedited Freight</a></li>
+              <li><a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Dedicated Transportation</a></li>
             </ul>
           </div>
 
-          <div className="footer-links-group">
-            <h4 className="footer-title">Contact Information</h4>
-            <ul className="footer-contact-info">
-              <li>Chicago, IL</li>
-              <li>Phone: (773) 555-0100</li>
-              <li>Email: dispatch@roadlinetrucking.com</li>
-              <li>24/7 Dispatch Center</li>
-            </ul>
+          <div className="footer-contact-col">
+            <h4 className="footer-heading">Contact Info</h4>
+            <address className="footer-address">
+              <p>RoadLine Trucking</p>
+              <p>Chicago, IL</p>
+              <p>Phone: <a href="tel:7735550100">(773) 555-0100</a></p>
+              <p>Email: <a href="mailto:dispatch@roadlinetrucking.com">dispatch@roadlinetrucking.com</a></p>
+            </address>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p className="copyright">
-            &copy; {currentYear} RoadLine Trucking. All rights reserved.
-          </p>
+          <p>&copy; {CURRENT_YEAR} RoadLine Trucking. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
