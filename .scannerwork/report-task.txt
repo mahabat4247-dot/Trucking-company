@@ -1,0 +1,6 @@
+projectKey=trucking-company
+serverUrl=http://3.23.96.239:9000
+serverVersion=26.9.0.129388
+dashboardUrl=http://3.23.96.239:9000/dashboard?id=trucking-company
+ceTaskId=6c47e200-0499-4d45-ab3b-d7b252f53f8a
+ceTaskUrl=http://3.23.96.239:9000/api/ce/task?id=6c47e200-0499-4d45-ab3b-d7b252f53f8a
